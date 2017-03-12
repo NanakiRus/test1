@@ -8,9 +8,10 @@
     <title>Document</title>
 </head>
 <body>
+<a href="/test1/template/indexOneAdd.php">Добавить книгу</a>
 <?php foreach ($books as $book) : ?>
     <div>
-        <h2><a href="?id=<?php echo $book->id; ?>"><?php echo $book->title; ?></a></h2>
+        <h2><a href="?act=One&id=<?php echo $book->id; ?>"><?php echo $book->title; ?></a></h2>
         <p>Автор: <?php echo $book->author ?></p>
         <p>Год выпуска: <?php echo $book->year; ?></p>
         <p>Цена <?php echo $book->price; ?>р.</p>

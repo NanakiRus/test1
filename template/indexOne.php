@@ -9,5 +9,8 @@
 </head>
 <body>
 <h1><?php echo $book->title; ?></h1>
+<p>Год: <?php echo $book->year; ?></p>
+<p>Автор: <?php echo $book->author; ?></p>
+<p>Цена: <?php echo $book->price; ?></p>
 </body>
 </html>
