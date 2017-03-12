@@ -38,7 +38,27 @@ class Books
     {
         $db = new DB();
 
-        $sql = 'INSERT INTO books (title, year, author, price) VALUES ()';
+        foreach ($this->data as $key => $value) {
+
+            if ('id' === $key) {
+                continue;
+            }
+
+            $data[':' . $key] = $value;
+        }
+
+        $sql = 'INSERT INTO books (title, year, author, price) VALUES (' . implode(', ', array_keys($data)) . ')';
+
+        $db->execute($sql, $data);
+    }
+
+    public function save()
+    {
+        if (isset($this->id) && '' !== $this->id) {
+
+        } else {
+            $this->insertOneBook();
+        }
     }
 
     public function fill(array $data)
