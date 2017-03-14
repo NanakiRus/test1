@@ -52,16 +52,12 @@ class Mail
             throw new \Exception('Не заполнено сообщение');
         }
 
-        if (true === $this->mail()) {
-            return true;
-        }
-
-        return false;
+        return $this->mail();
     }
 
     protected function mail()
     {
-        mail($this->to, $this->subject, $this->message, $this->headers);
+        return mail($this->to, $this->subject, $this->message, $this->headers);
     }
 
 }
