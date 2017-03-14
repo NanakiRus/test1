@@ -12,17 +12,23 @@ class Mail
 
     public function to(string $to)
     {
-        return $this->to = $to;
+        $this->to = $to;
+
+        return $this;
     }
 
     public function subject(string $subject)
     {
-        return $this->subject = $subject;
+        $this->subject = $subject;
+
+        return $this;
     }
 
     public function message(string $message)
     {
-        return $this->message = wordwrap(100, $message);
+        $this->message = wordwrap(100, $message);
+
+        return $this;
     }
 
     public function headers($headers)
@@ -30,12 +36,9 @@ class Mail
         if (is_array($headers)) {
             $headers = implode("\r\n", $headers);
         }
-        return $this->headers = $headers;
-    }
+        $this->headers = $headers;
 
-    protected function mail()
-    {
-        mail($this->to, $this->subject, $this->message, $this->headers);
+        return $this;
     }
 
     public function send()
@@ -50,6 +53,11 @@ class Mail
         }
 
         $this->mail();
+    }
+
+    protected function mail()
+    {
+        mail($this->to, $this->subject, $this->message, $this->headers);
     }
 
 }
