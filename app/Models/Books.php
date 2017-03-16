@@ -68,7 +68,7 @@ class Books
             $set[] = $key . ' = :' . $key;
         }
 
-        $sql = 'UPDATE books SET '. implode(', ', $set) .' WHERE id = :id';
+        $sql = 'UPDATE books SET ' . implode(', ', $set) . ' WHERE id = :id';
 
         return $db->execute($sql, $data);
     }
@@ -80,6 +80,7 @@ class Books
         } else {
             $this->insertOneBook();
         }
+        return $this;
     }
 
     public function fill(array $data)
@@ -87,6 +88,7 @@ class Books
         foreach ($this->fillable as $value) {
             $this->$value = $data[$value];
         }
+        return $this;
     }
 
 }

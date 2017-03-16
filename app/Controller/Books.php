@@ -48,8 +48,7 @@ class Books
     {
         if (isset($_POST)) {
             $book = new \app\Models\Books();
-            $book->fill($_POST);
-            $book->save();
+            $book->fill($_POST)->save();
         }
 
         header('Location: /test1/index.php');
