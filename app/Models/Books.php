@@ -10,6 +10,7 @@ class Books
     use GetTrait;
 
     public $fillable = [
+        'id',
         'title',
         'year',
         'author',
@@ -49,13 +50,33 @@ class Books
 
         $sql = 'INSERT INTO books (title, year, author, price) VALUES (' . implode(', ', array_keys($data)) . ')';
 
-        $db->execute($sql, $data);
+        return $db->execute($sql, $data);
+    }
+
+    public function updateOneBook()
+    {
+        $db = new DB();
+
+        $data = [];
+        $set = [];
+
+        foreach ($this->data as $key => $value) {
+            $data[':' . $key] = $value;
+            if ('id' === $key) {
+                continue;
+            }
+            $set[] = $key . ' = :' . $key;
+        }
+
+        $sql = 'UPDATE books SET '. implode(', ', $set) .' WHERE id = :id';
+
+        return $db->execute($sql, $data);
     }
 
     public function save()
     {
         if (isset($this->id) && '' !== $this->id) {
-
+            $this->updateOneBook();
         } else {
             $this->insertOneBook();
         }

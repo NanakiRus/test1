@@ -36,6 +36,14 @@ class Books
         }
     }
 
+    public function actionOneUpd()
+    {
+        if (isset($_GET['id']) && '' !== $_GET['id']) {
+            $this->view->book = \app\Models\Books::getOneBook($_GET['id']);
+            $this->view->view(__DIR__ . '/../../template/indexOneUpd.php');
+        }
+    }
+
     public function actionCU()
     {
         if (isset($_POST)) {
@@ -44,7 +52,7 @@ class Books
             $book->save();
         }
 
-        header('Location: /test1/template/index.php');
+        header('Location: /test1/index.php');
         die;
     }
 

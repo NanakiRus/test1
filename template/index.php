@@ -15,7 +15,10 @@
         <p>Автор: <?php echo $book->author ?></p>
         <p>Год выпуска: <?php echo $book->year; ?></p>
         <p>Цена <?php echo $book->price; ?>р.</p>
+        <br />
+        <p><a href="?act=OneUpd&id=<?php echo $book->id; ?>">Редактировать</a></p>
     </div>
+    <hr />
 <?php endforeach; ?>
 </body>
 </html>
