@@ -73,6 +73,15 @@ class Books
         return $db->execute($sql, $data);
     }
 
+    public static function deleteOneBook($id)
+    {
+        $db = new DB();
+
+        $sql = 'DELETE FROM books WHERE id = :id';
+
+        return $db->execute($sql, [':id' => $id]);
+    }
+
     public function save()
     {
         if (isset($this->id) && '' !== $this->id) {

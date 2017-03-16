@@ -55,5 +55,15 @@ class Books
         die;
     }
 
+    public function actionDelete()
+    {
+        if(isset($_GET['id']) && '' !== $_GET['id']) {
+            \app\Models\Books::deleteOneBook($_GET['id']);
+        }
+
+        header('Location: /test1/index.php');
+        die;
+    }
+
 
 }

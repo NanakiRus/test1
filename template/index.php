@@ -17,6 +17,7 @@
         <p>Цена <?php echo $book->price; ?>р.</p>
         <br />
         <p><a href="?act=OneUpd&id=<?php echo $book->id; ?>">Редактировать</a></p>
+        <p><a href="?act=Delete&id=<?php echo $book->id; ?>">Удалить</a></p>
     </div>
     <hr />
 <?php endforeach; ?>
